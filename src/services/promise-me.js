@@ -24,7 +24,10 @@ export function thenGetQuotes() {
   const result = fetch('https://futuramaapi.herokuapp.com/api/quotes/1')
     .then((res) => res.json())
     .then((result) => ({ quote: result[0], totalResults: result.length }))
-    .then(() => console.log('2. .then fetch complete'));
+    .then((result) => {
+      console.log('2. .then fetch complete');
+      return result;
+    });
 
   console.log('3. After .then fetch');
 
@@ -61,7 +64,10 @@ export function thenTryGetQuotes() {
   const result = fetch('https://futuramaapi.herokuapp.com/api/quotes/1')
     .then((res) => res.json())
     .then((result) => ({ quote: result[0], totalResults: result.length }))
-    .then(() => console.log('2. .then fetch complete'))
+    .then((result) => {
+      console.log('2. .then fetch complete');
+      return result;
+    })
     .catch((error) => console.error('Oops! An error occurred'));
 
   console.log('3. After .then fetch');
@@ -102,7 +108,10 @@ export function thenFinallyGetQuotes() {
   const result = fetch('https://futuramaapi.herokuapp.com/api/quotes/1')
     .then((res) => res.json())
     .then((result) => ({ quote: result[0], totalResults: result.length }))
-    .then(() => console.log('2. .then fetch complete'))
+    .then((result) => {
+      console.log('2. .then fetch complete');
+      return result;
+    })
     .catch((error) => console.error('Oops! An error occurred'))
     .finally(() => console.log('All done!'));
 
@@ -116,9 +125,10 @@ export function thenFinallyGetQuotes() {
  */
 
 export function thenAsyncGetQuotes() {
-  return asyncFinallyGetQuotes().then((result) =>
-    console.log('Completed running asyncFinallyGetQuotes with result:', result)
-  );
+  return asyncFinallyGetQuotes().then((result) => {
+    console.log('Completed running asyncFinallyGetQuotes with result:', result);
+    return result;
+  });
 }
 
 /**
