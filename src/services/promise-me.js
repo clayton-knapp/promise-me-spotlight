@@ -136,18 +136,22 @@ export function thenAsyncGetQuotes() {
  */
 
 export async function asyncThenGetQuotes() {
-  console.log('1. Before .then fetch');
+  // console.log('1. Before .then fetch');
 
-  const result = await fetch('https://futuramaapi.herokuapp.com/api/quotes/1')
-    .then((res) => res.json())
-    .then((result) => {
-      console.log('2. .then fetch complete');
-      return { quote: result[0], totalResults: result.length };
-    })
-    .catch((error) => console.error('Oops! An error occurred'))
-    .finally(() => console.log('All done!'));
+  // const result = await fetch('https://futuramaapi.herokuapp.com/api/quotes/1')
+  //   .then((res) => res.json())
+  //   .then((result) => {
+  //     console.log('2. .then fetch complete');
+  //     return { quote: result[0], totalResults: result.length };
+  //   })
+  //   .catch((error) => console.error('Oops! An error occurred'))
+  //   .finally(() => console.log('All done!'));
 
-  console.log('3. After .then fetch');
+  // console.log('3. After .then fetch');
+
+  // return result;
+
+  const result = await thenFinallyGetQuotes();
 
   return result;
 }
